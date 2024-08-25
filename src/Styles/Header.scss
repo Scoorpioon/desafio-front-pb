@@ -1,0 +1,39 @@
+@import 'App.scss';
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  height: 120px;
+  width: 100%;
+  padding: 0 3px;
+
+  #title_content {
+    position: relative;
+    /* padding: 2px; */
+    
+    img {
+      width: 200px;
+    }
+
+    span {
+      /* transform: translateX(-112px) translateY(50px); */ // Para telas maiores que 738px
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: red;
+      font-family: "MedievalSharp", "Playfair Display", serif;   
+    }
+  }
+
+  input[type="text"] {
+    padding: 4px;
+    background-color: $corQuartaria;
+    border: none;
+    color: black;
+    font-family: "MedievalSharp", serif;
+  }
+}
