@@ -14,7 +14,7 @@ const Header = () => {
   return(
     <header>
       <div id="title_content">
-        <img src="DeDLogo.png" alt="Logo do Dungeons e Dragons" />
+        <img src="/Images/DeDLogo.png" alt="Logo do Dungeons e Dragons" />
         <span>Livro de feitiços</span>
       </div>
       <input type="text" placeholder="Procurar magia..." onChange={spellTyped} />

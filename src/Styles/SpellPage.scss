@@ -1,0 +1,135 @@
+@import 'App.scss';
+
+#spellPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        width: 88%;
+        height: 100%;
+
+        font-size: 1.3em;
+
+    .mainBox {
+        @extend .box;
+
+        .spellMainData {
+            position: relative;
+
+
+            h2 {
+                border-left: 2px solid $corQuintaria;
+                padding: 0 6px;
+                margin-bottom: 4px;
+            }
+    
+            .spellDescription {
+                width: 100%;
+            }
+        }
+
+        aside {
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 8px;
+                position: relative;
+                width: 12%;
+    
+                img {
+                    width: 50px;
+                }
+    
+                span {
+                    position: relative;
+                    top: 3px;
+                    font-family: "BlackChancery";
+                }
+            }
+        }
+    }
+
+    .classesBox {
+        @extend .box;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            position: relative;
+            width: 12%;
+
+            img {
+                width: 50px;
+            }
+
+            span {
+                position: relative;
+                top: 3px;
+                font-family: "BlackChancery";
+            }
+        }
+    }
+
+/*     border: 1px solid red; */
+}
+
+/* Responsividade */
+
+/* @media (min-width: 650px) {
+    #spellPage {
+        width: 65%;
+
+        .mainBox {
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+    }
+} */
+
+@media (min-width: 1024px) {
+    #spellPage {
+        width: 65%;
+
+        .mainBox {
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: start;
+
+            .spellMainData {
+                width: 70%;
+
+                .spellDescription {
+                    width: 82%;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    
+                    width: 1px;
+                    height: 90%;
+    
+                    top: 10px;
+                    right: 60px;
+    
+                    background-color: $corTerciaria;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    #spellPage {
+        width: 55%;
+
+/*         .mainBox {
+            flex-wrap: nowrap;
+            flex-direction: row;
+        } */
+    }
+}

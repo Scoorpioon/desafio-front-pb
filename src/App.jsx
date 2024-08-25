@@ -11,26 +11,13 @@ export default function App() {
       <SpellSearched>
         <Header />
         <main>
-          <Grid />
-          {/* <DetailedSpell spellName='acid-arrow' /> */}
+          <Routes>
+              <Route path='/' element={<Grid />} />
+              <Route path='/spell/:spellName' element={<DetailedSpell />} />
+          </Routes>
         </main>
       </SpellSearched>
-      <footer>Desenvolvido por Gabriel A.</footer>
+      {/* <footer>Desenvolvido por Gabriel A.</footer> */}
     </Router>
   );
 }
-
-/*
-Código da API:
-
-const [magic, setMagic] = useState();
-
-api
-  .get("/spells")
-  .then((response) => setMagic(response.data))
-  .catch((err) => {
-    console.error("ops! ocorreu um erro" + err);
-  })
-
-console.log(magic);
-*/
