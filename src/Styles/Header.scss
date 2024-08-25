@@ -30,10 +30,49 @@ header {
   }
 
   input[type="text"] {
-    padding: 4px;
+    padding: 8px;
+    border-radius: 12px;
+    
     background-color: $corQuartenaria;
     border: none;
     color: black;
+    
     font-family: "MedievalSharp", serif;
+    font-size: .7em;
+
+    box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* == Responsividade == */
+@media (max-width: 440px) {
+  header {
+    flex-direction: column;
+    padding: 12px 0;
+    margin: 12px 0;
+    gap: 8px;
+
+    input[type="text"] {
+      width: 62%;
+      font-size: .9em;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    padding: 0 16px;
+  
+    input[type="text"] {
+      font-size: .9em;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  header {
+    input[type="text"] {
+      font-size: 1.1em;
+    }
   }
 }

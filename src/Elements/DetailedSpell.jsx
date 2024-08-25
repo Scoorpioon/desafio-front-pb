@@ -17,7 +17,6 @@ const DetailedSpell = () => {
       } catch(error) {
         console.error(`Deu algum erro ao pesquisar a magia ou consumir a API: ${error}`);
       }
-
     }
     
     getData();
@@ -38,7 +37,7 @@ const DetailedSpell = () => {
           <ul>
             {spell.classes.map((classe) => {return <li key={Math.random()}>
               <span>{classe.name}</span>
-              <img src={ImagesUrls[classe.name]} alt={`Ícone de ${classe.name}`} />
+              <img src={ImagesUrls[classe.name]} />
             </li>})}
           </ul>
           <ul>

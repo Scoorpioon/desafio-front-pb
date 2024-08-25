@@ -4,8 +4,40 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 80%;
   gap: 6px;
   
   /* border: 1px solid red; */
+}
+
+.compressed_box {
+  @extend .box;
+  
+  width: 60%;
+  height: 12%;
+
+  transition: 250ms;
+  font-size: 1.6em;
+
+  &:hover {
+    background-color: $corTerciaria;
+  }
+}
+
+/* == Responsividade == */
+
+@media (min-width: 1024px) {
+  #spells_grid {
+    width: 80%;
+  }
+
+  .compressed_box {
+    width: 30%;
+    height: 25%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .compressed_box {
+    width: 20%;
+  }
 }

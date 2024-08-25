@@ -1,5 +1,6 @@
-import {useContext} from 'react';
 import {SpellFilterContext} from '../Services/contextFilter.jsx';
+import {useContext} from 'react';
+import {Link} from 'react-router-dom';
 import '../Styles/Header.scss';
 
 const Header = () => {
@@ -14,8 +15,10 @@ const Header = () => {
   return(
     <header>
       <div id="title_content">
-        <img src="/Images/DeDLogo.png" alt="Logo do Dungeons e Dragons" />
-        <span>Livro de feitiços</span>
+        <Link to="/">
+          <img src="/Images/DeDLogo.png" alt="Logo do Dungeons e Dragons" />
+          <span>Livro de feitiços</span>
+        </Link>
       </div>
       <input type="text" placeholder="Procurar magia..." onChange={spellTyped} />
     </header>

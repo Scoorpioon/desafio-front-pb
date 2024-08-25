@@ -28,7 +28,7 @@ const Grid = () => {
   return(
     <section id="spells_grid">
       {spells ? 
-      quantidade.map((num) => {return <Link to={`/spell/${spells.results[num].index}`} className="compressed_box">{spells.results[num].index}</Link>}) 
+      quantidade.map((num) => {return <Link key={num} to={`/spell/${spells.results[num].index}`} className="compressed_box">{spells.results[num].index}</Link>}) 
       : <span>Carregando as magias...</span>}
     </section>
   );
