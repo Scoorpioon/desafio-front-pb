@@ -22,7 +22,7 @@ const DetailedSpell = () => {
     getData();
 
     console.log(spell);
-    console.log(ImagesUrls['Wizard'])
+    console.log(ImagesUrls['Wizard']);
   }, []);
   
   return(spell ?
@@ -34,23 +34,27 @@ const DetailedSpell = () => {
         </section>
 
         <aside>
+          <h3>Classes</h3>
           <ul>
             {spell.classes.map((classe) => {return <li key={Math.random()}>
               <span>{classe.name}</span>
               <img src={ImagesUrls[classe.name]} />
             </li>})}
           </ul>
+          <h3>Subclasses</h3>
           <ul>
-            {spell.subclasses.map((classe) => {return <li key={Math.random()}>
-              {classe.name} 
+            {spell.subclasses.map((subclasse) => {return <li key={Math.random()}>
+              {subclasse.name} 
             </li>})}
           </ul>
         </aside>
       </section>
 
-        <span>{spell.attack_type}</span>
-        <span>{spell.concentration}</span>
-        <span>{spell.material}</span>
+      <section className="box">
+        <span>Atack: {spell.attack_type}</span>
+        <span>Concentration: {spell.concentration}</span>
+        <span>Material: {spell.material}</span>
+      </section>
       {/* <div className="classesBox">
         <ul>
           {spell.classes.map((classe) => {return <li key={Math.random()}>
