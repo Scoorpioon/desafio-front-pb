@@ -55,19 +55,6 @@ const DetailedSpell = () => {
         <span>Concentration: {spell.concentration}</span>
         <span>Material: {spell.material}</span>
       </section>
-      {/* <div className="classesBox">
-        <ul>
-          {spell.classes.map((classe) => {return <li key={Math.random()}>
-            <span>{classe.name}</span>
-            <img src={ImagesUrls[classe.name]} alt={`Ícone de ${classe.name}`} />
-          </li>})}
-        </ul>
-        <ul>
-          {spell.subclasses.map((classe) => {return <li key={Math.random()}>
-            {classe.name} 
-          </li>})}
-        </ul>
-      </div> */}
     </article>
          :
     <article id="spellPage">

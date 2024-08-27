@@ -54,7 +54,6 @@ body {
   align-items: center;
   border-radius: 4px;
   width: 100%;
-  /* box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.4); */
   
   background-color: $corSecundaria;
   padding: 8px;
@@ -73,8 +72,3 @@ footer {
 }
 
 /* == Responsividade == */
-
-// Ajustar a box para se encaixar de maneira menor na tela, para telas maiores
-@media (max-width: 1024px) {
-  // width: 55%
-}
