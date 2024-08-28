@@ -34,28 +34,45 @@ const DetailedSpell = () => {
         </section>
 
         <aside>
-          <h3>Classes</h3>
-          <ul>
-            {spell.classes.map((classe) => {return <li key={Math.random()}>
-              <span>{classe.name}</span>
-              <img src={ImagesUrls[classe.name]} />
-            </li>})}
-          </ul>
-          <h3>Subclasses</h3>
-          <ul>
-            {spell.subclasses.map((subclasse) => {return <li key={Math.random()}>
-              {subclasse.name} 
-            </li>})}
-          </ul>
+          <div className="classes">
+            <h3>Classes</h3>
+            <ul>
+              {spell.classes.map((classe) => {return <li key={Math.random()}>
+                <span>{classe.name}</span>
+                <img src={ImagesUrls[classe.name]} />
+              </li>})}
+            </ul>
+          </div>
+          <div className="subclasses">
+            <h3>Subclasses</h3>
+            <ul>
+              {spell.subclasses.map((subclasse) => {return <li key={Math.random()}>
+                {subclasse.name} 
+              </li>})}
+            </ul>
+          </div>
         </aside>
       </section>
 
       <section className="box">
+        {/* {Object.keys(spell).forEach((key) => {return <span>{key}</span>})} */}
+        <span>Range: {spell.range}</span>
+        {spell.components.map((component) => {return <span className="components">{component}</span>})}
+        <span>Material: {spell.material}</span>
+        <span>Atack: {spell.attack_type}</span>
+        <span>Concentration: {spell.concentration}</span>
+        <span>Duration: {spell.duration}</span>
+        <span>Level: {spell.level}</span>
+        <span>Casting time: {spell.casting_time}</span>
+      </section>
+
+      {/* <section className="box">
         <span>Atack: {spell.attack_type}</span>
         <span>Concentration: {spell.concentration}</span>
         <span>Material: {spell.material}</span>
-      </section>
+      </section> */}
     </article>
+
          :
     <article id="spellPage">
       <span>Carregando informações...</span>

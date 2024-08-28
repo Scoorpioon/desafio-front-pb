@@ -22,14 +22,29 @@ const Grid = () => {
     }
 
     getData();
-    console.log(spells);
   }, []);
+
+/*   const capitalize = (word) => {
+    let newWord = [];
+
+    for(let c = 0; c <= word.length; c++) {
+      if(word[c - 1] === ' ' || c === 0) {
+        newWord.push(word[c].toUpperCase());
+      } else {
+        newWord.push(word[c]);
+      };
+    };
+
+    let finalWord = newWord.toString();
+    
+    return finalWord.replaceAll(",", "");
+  }; */ //essa function faz com que todas as letras de inicio de palavras em uma frase se tornem maiúscula.
 
   const showAllOrFilterSpellsInGrid = () => {
     if(spells) {
       if(spellFilter) { //se a variável "spellFilter" for preenchida, significa que uma pesquisa está sendo realizada, e retornamos a lista do filtro das magias. Se não, será retornado a lista completa das magias
         let magicsFounds = spells.results.filter((spell) => spell.name.includes(spellFilter));
-        console.log(magicsFounds);
+
         return magicsFounds.map((magic) => {return <Link key={magic.key} to={`/spell/${magic.index}`} className="compressed_box">{magic.name}</Link>})
       } else {
         return quantidade.map((num) => {return <Link key={num} to={`/spell/${spells.results[num].index}`} className="compressed_box">{spells.results[num].index}</Link>}) 
@@ -42,13 +57,8 @@ const Grid = () => {
   return(
     <section id="spells_grid">
       {showAllOrFilterSpellsInGrid()}
-      {/* spells ? 
-      quantidade.map((num) => {return <Link key={num} to={`/spell/${spells.results[num].index}`} className="compressed_box">{spells.results[num].index}</Link>}) 
-      : <span>Carregando as magias...</span> */}
     </section>
   );
 }
 
 export default Grid;
-
-// spells.results[num].index
