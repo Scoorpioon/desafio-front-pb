@@ -12,7 +12,7 @@ header {
   #title_content {
     position: relative;
     /* padding: 2px; */
-    
+
     img {
       width: 200px;
     }
@@ -32,11 +32,11 @@ header {
   input[type="text"] {
     padding: 8px;
     border-radius: 12px;
-    
+
     background-color: $corQuartenaria;
     border: none;
     color: black;
-    
+
     font-family: "MedievalSharp", serif;
     font-size: .7em;
 
@@ -62,7 +62,7 @@ header {
 @media (min-width: 1024px) {
   header {
     padding: 0 16px;
-  
+
     input[type="text"] {
       font-size: .9em;
     }

@@ -8,7 +8,7 @@ import '../Styles/SpellPage.scss';
 const DetailedSpell = () => {
   const {spellName} = useParams();
   const [spell, setSpell] = useState();
-  
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -18,13 +18,12 @@ const DetailedSpell = () => {
         console.error(`Deu algum erro ao pesquisar a magia ou consumir a API: ${error}`);
       }
     }
-    
+
     getData();
 
     console.log(spell);
-    console.log(ImagesUrls['Wizard']);
   }, []);
-  
+
   return(spell ?
     <article id="spellPage">
       <section className="mainBox">
@@ -54,23 +53,24 @@ const DetailedSpell = () => {
         </aside>
       </section>
 
-      <section className="box">
-        {/* {Object.keys(spell).forEach((key) => {return <span>{key}</span>})} */}
-        <span>Range: {spell.range}</span>
-        {spell.components.map((component) => {return <span className="components">{component}</span>})}
-        <span>Material: {spell.material}</span>
-        <span>Atack: {spell.attack_type}</span>
-        <span>Concentration: {spell.concentration}</span>
-        <span>Duration: {spell.duration}</span>
-        <span>Level: {spell.level}</span>
-        <span>Casting time: {spell.casting_time}</span>
-      </section>
+      <section className="boxContainer">
+        <section className="box">
+          {/* {Object.keys(spell).forEach((key) => {return <span>{key}</span>})} */}
+          <span>Range: {spell.range}</span>
+          <ul className="components">
+            {spell.components.map((component) => {return <li className="components">{component}</li>})}
+          </ul>
+          <span>Material: {spell.material}</span>
+          <span>Atack: {spell.attack_type}</span>
+          <span>Concentration: {spell.concentration}</span>
+        </section>
 
-      {/* <section className="box">
-        <span>Atack: {spell.attack_type}</span>
-        <span>Concentration: {spell.concentration}</span>
-        <span>Material: {spell.material}</span>
-      </section> */}
+        <section className="box">
+          <span>Duration: {spell.duration}</span>
+          <span>Level: {spell.level}</span>
+          <span>Casting time: {spell.casting_time}</span>
+        </section>
+      </section>
     </article>
 
          :

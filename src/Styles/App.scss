@@ -6,6 +6,8 @@ $corSecundaria: #947951; // cor dos componentes principaiss
 $corTerciaria: #946f38; // cor do hover
 $corQuartenaria: #b3a176; // cor da barra de pesquisa
 $corQuintenaria: #ffdd887f; // nothing
+$corDoTituloPrincipal: #445eb8;
+$corDeFiltragem: #546aba;
 
 /* Arquivos de fontes */
 @font-face {
@@ -30,6 +32,7 @@ body {
   width: 99.6vw;
   height: 100vh;
   background-color: $corPrincipal;
+  overflow-x: hidden;
 
   #root {
     width: 100%;
@@ -54,7 +57,7 @@ body {
   align-items: center;
   border-radius: 4px;
   width: 100%;
-  
+
   background-color: $corSecundaria;
   padding: 8px;
 
