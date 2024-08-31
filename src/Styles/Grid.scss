@@ -21,12 +21,19 @@
       color: $corDoTituloPrincipal;
     }
 
-    select {   
+    
+    .specificFiltering {
       width: 6em;
       font-size: 1em;
       
       background-color: $corDeFiltragem;
       border: none;
+    }
+
+    .numberOfSpells {
+      @extend .specificFiltering;
+
+      left: 0;
     }
   }
 

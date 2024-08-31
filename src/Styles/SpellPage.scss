@@ -54,10 +54,6 @@
                 position: relative;
                 width: 12%;
 
-                img {
-                    width: 50px;
-                }
-
                 span {
                     position: relative;
                     top: 3px;
@@ -82,6 +78,7 @@
                 position: relative;
     
                 img {
+                    filter: brightness(0%);
                     width: 50px;
                 }
     

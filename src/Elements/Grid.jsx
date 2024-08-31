@@ -8,8 +8,7 @@ import '../Styles/Grid.scss';
 const Grid = () => {
   const {spellFilter} = useContext(SpellFilterContext);
   const [spells, setSpells] = useState();
-  const quantidade = [...Array(12).keys()]; //quantidade de magias por página, basta alterar o número e você vai atualizar quantas magias aparecem no grid.
-  /* const numberOfPages = []; */
+  const [amountOfSpells, setAmountOfSpells] = useState([...Array(12).keys()]); //quantidade de magias por página, basta alterar o número e você vai atualizar quantas magias aparecem no grid.
 
   useEffect(() => {
     const getData = async () => {
@@ -22,6 +21,7 @@ const Grid = () => {
     }
 
     getData();
+    console.log(spells);
   }, []);
 
   
@@ -29,7 +29,7 @@ const Grid = () => {
     let numberOfPages = [];
     
     if(spells) {
-      for(let counter = 1; counter < spells.count / quantidade.length; counter++) {
+      for(let counter = 1; counter < spells.count / amountOfSpells.length; counter++) {
         numberOfPages.push(<li value={counter}>{counter}</li>)
       }
 
@@ -44,7 +44,7 @@ const Grid = () => {
 
         return magicsFounds.map((spell) => {return <CompressedBox linkTo={spell.index} spell={spell} />})
       } else {
-        return quantidade.map((num) => {return <CompressedBox linkTo={spells.results[num].index} spell={spells.results[num]} />}) 
+        return amountOfSpells.map((num) => {return <CompressedBox linkTo={spells.results[num].index} spell={spells.results[num]} />}) 
       }
     } else {
       return <span>Carregando as magias...</span> // a variável "spells" armazena os dados da API. Enquanto a requisição não for terminada e a variável não for preenchida, é executado essa tag span indicando o carregamento da api.
@@ -54,8 +54,16 @@ const Grid = () => {
   return(
     <article id="spells_grid">
       <div className="spellsHeader">
+        <select className="numberOfSpells" onChange={(numbers) => {setAmountOfSpells([...Array(Number(numbers.target.value)).keys()])}}>
+          <option value="12">12</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="319">All</option>
+        </select>
         <h1>Spells</h1>
-        <select onChange={(values) => {console.log(values.target.value)}}>
+        <select className="specificFiltering" onChange={(values) => {console.log(values.target.value)}}>
           <option value="all">All</option>
           <option value="class">Class</option>
           <option value="level">Level</option>

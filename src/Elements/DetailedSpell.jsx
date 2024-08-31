@@ -79,7 +79,7 @@ const DetailedSpell = () => {
 
         { hasSlotLevel ? 
         <section id="slotLevel" className="box">
-          <h2>{spell.damage ? 'Damage' : 'Heal'} at slot level</h2>
+          <h2>{spell.damage ? 'Damage' : 'Heal'} at slot or character level</h2>
           <p>{spell.damage ? `Damage type: ${spell.damage.damage_type.name}` : null}</p>
           <ul>
             {spell.damage ? 
