@@ -17,7 +17,6 @@
         .spellMainData {
             position: relative;
 
-
             h2 {
                 border-left: 2px solid $corQuintenaria;
                 padding: 0 6px;
@@ -30,7 +29,22 @@
         }
 
         aside {
-            /* border: 1px solid red; */
+            display: flex;
+            gap: 12px;
+
+            margin-top: 32px;
+
+            .components {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                ul {
+                    display: flex;
+                    gap: 8px;
+                    font-size: .9em;
+                }
+            }
 
             li {
                 display: flex;
@@ -53,26 +67,56 @@
         }
     }
 
-    .classesBox {
-        @extend .box;
+    .classesAndSubclasses {
+        display: flex;
+        justify-content: space-between;
 
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8px;
-            position: relative;
-            width: 12%;
+        width: 100%;
+        padding: 0 16px;
 
-            img {
-                width: 50px;
-            }
-
-            span {
+        .classes {
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 position: relative;
-                top: 3px;
-                font-family: "BlackChancery";
+    
+                img {
+                    width: 50px;
+                }
+    
+                span {
+                    position: relative;
+                    top: 3px;
+                    font-family: "BlackChancery";
+                }
             }
+        }
+        
+        .subclasses {       
+            .no-data {
+                position: relative;
+                top: 1000%;
+                color: $corQuartenaria;
+            }
+        }
+
+    }
+
+    #slotLevel {
+        justify-content: start;
+        align-items: start;
+        gap: 12px;
+        
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+
+            li+li:before {
+                content: '/\00a0'; // Adiciona as barras e um espaçamento entre cada dado
+            }
+
         }
     }
 }
@@ -84,21 +128,22 @@
 }
 
 /* Responsividade */
-
-/* @media (min-width: 650px) {
-    #spellPage {
-        width: 65%;
-
-        .mainBox {
-            flex-wrap: nowrap;
-            flex-direction: row;
+@media (max-width: 768px) {
+    .mainBox {
+        aside {
+            flex-direction: column;
         }
     }
-} */
+
+    .boxContainer {
+        flex-direction: column;
+        gap: 22px;
+    }
+}
 
 @media (min-width: 1024px) {
     #spellPage {
-        width: 65%;
+        width: 84%;
 
         .mainBox {
             flex-wrap: nowrap;
@@ -133,7 +178,50 @@
                 gap: 12px;
                 width: 30%;
 
+                margin-top: 0;
+
                 border-radius: 8px;
+            }
+        }
+
+        .classesAndSubclasses {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+    
+            width: 100%;
+            padding: 0 22px;
+    
+            .classes {
+                position: relative;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: relative;
+        
+                    span {
+                        position: relative;
+                        top: 3px;
+                        font-family: "BlackChancery";
+                    }
+                }
+
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                
+                width: 1px;
+                height: 100%;
+
+                top: 0;
+                right: 50%; // Centraliza a divisória, pra ficar bonitão
+
+                background-color: $corTerciaria;
+
             }
         }
     }
@@ -141,11 +229,6 @@
 
 @media (min-width: 1440px) {
     #spellPage {
-        width: 55%;
-
-/*         .mainBox {
-            flex-wrap: nowrap;
-            flex-direction: row;
-        } */
+        width: 68%;
     }
 }

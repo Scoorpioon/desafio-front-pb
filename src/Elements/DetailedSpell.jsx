@@ -8,6 +8,7 @@ import '../Styles/SpellPage.scss';
 const DetailedSpell = () => {
   const {spellName} = useParams();
   const [spell, setSpell] = useState();
+  const [hasSlotLevel, setSlotLevelData] = useState();
 
   useEffect(() => {
     const getData = async () => {
@@ -24,6 +25,13 @@ const DetailedSpell = () => {
     console.log(spell);
   }, []);
 
+  useEffect(() => {
+    if(spell) {
+      //verifica se a magia tem informações como dano ou fator de cura. Se tiver, incluo uma caixa extra para detalhar melhor. Se não, não incluo a caixa
+      spell.damage || spell.heal_at_slot_level ? setSlotLevelData(true) : setSlotLevelData(false);
+    }
+  }, [spell]);
+
   return(spell ?
     <article id="spellPage">
       <section className="mainBox">
@@ -33,47 +41,60 @@ const DetailedSpell = () => {
         </section>
 
         <aside>
-          <div className="classes">
-            <h3>Classes</h3>
+          <span><strong>Level:</strong> {spell.level}</span>
+          <span><strong>Casting time:</strong> {spell.casting_time}</span>
+          <span><strong>Range:</strong> {spell.range}</span>
+          <div className="components">
+            <span><strong>Components:</strong></span>
             <ul>
-              {spell.classes.map((classe) => {return <li key={Math.random()}>
-                <span>{classe.name}</span>
-                <img src={ImagesUrls[classe.name]} />
-              </li>})}
+              {spell.components.map((component) => {return <li>{component}</li>})}
             </ul>
           </div>
-          <div className="subclasses">
-            <h3>Subclasses</h3>
-            <ul>
-              {spell.subclasses.map((subclasse) => {return <li key={Math.random()}>
-                {subclasse.name} 
-              </li>})}
-            </ul>
-          </div>
+          <span><strong>Duration:</strong> {spell.duration}</span>
         </aside>
       </section>
 
       <section className="boxContainer">
-        <section className="box">
-          {/* {Object.keys(spell).forEach((key) => {return <span>{key}</span>})} */}
-          <span>Range: {spell.range}</span>
-          <ul className="components">
-            {spell.components.map((component) => {return <li className="components">{component}</li>})}
-          </ul>
-          <span>Material: {spell.material}</span>
-          <span>Atack: {spell.attack_type}</span>
-          <span>Concentration: {spell.concentration}</span>
+        <section className="box">      
+          <div className="classesAndSubclasses">
+            <div className="classes">
+              <h3>Classes</h3>
+              <ul>
+                {spell.classes.map((classe) => {return <li key={Math.random()}>
+                  <span>{classe.name}</span>
+                  <img src={ImagesUrls[classe.name]} />
+                </li>})}
+              </ul>
+            </div>
+            <div className="subclasses">
+              <h3>Subclasses</h3>
+              <ul>
+                {spell.subclasses.length > 0 ? spell.subclasses.map((subclasse) => {return <li key={Math.random()}>
+                  {subclasse.name} 
+                </li>}) : <li className="no-data">No subclasses!</li>}
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <section className="box">
-          <span>Duration: {spell.duration}</span>
-          <span>Level: {spell.level}</span>
-          <span>Casting time: {spell.casting_time}</span>
+        { hasSlotLevel ? 
+        <section id="slotLevel" className="box">
+          <h2>{spell.damage ? 'Damage' : 'Heal'} at slot level</h2>
+          <p>{spell.damage ? `Damage type: ${spell.damage.damage_type.name}` : null}</p>
+          <ul>
+            {spell.damage ? 
+            Object.keys(spell.damage.damage_at_slot_level).map((key) => {return <li title={`Slot ${key}`}>Slot {key}: {spell.damage.damage_at_slot_level[key]}</li>})
+            : 
+            Object.keys(spell.heal_at_slot_level).map((key) => {return <li title={`Slot ${key}`}>Slot {key}: {spell.heal_at_slot_level[key]}</li>})
+            }
+          </ul>
         </section>
+        :
+        null
+        }
       </section>
     </article>
-
-         :
+        :
     <article id="spellPage">
       <span>Carregando informações...</span>
     </article>
