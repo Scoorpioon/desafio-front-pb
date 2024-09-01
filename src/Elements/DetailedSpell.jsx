@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import ImagesUrls from './AditionalData/imagesUrls.jsx';
 import api from '../Services/apiconfig.jsx';
-import axios from 'axios';
+import formatKeyName from './functions/formatKeyName.jsx';
 import '../Styles/SpellPage.scss';
 
 const DetailedSpell = () => {
@@ -51,6 +51,7 @@ const DetailedSpell = () => {
             </ul>
           </div>
           <span><strong>Duration:</strong> {spell.duration}</span>
+          <span><strong>School:</strong> {spell.school.name}</span>
         </aside>
       </section>
 
@@ -79,11 +80,15 @@ const DetailedSpell = () => {
 
         { hasSlotLevel ? 
         <section id="slotLevel" className="box">
-          <h2>{spell.damage ? 'Damage' : 'Heal'} at slot or character level</h2>
+          <h2>{spell.damage ? formatKeyName(Object.keys(spell.damage)[1]) : 'Heal at slot level'}</h2>
           <p>{spell.damage ? `Damage type: ${spell.damage.damage_type.name}` : null}</p>
+          <p>{}</p>
           <ul>
-            {spell.damage ? 
+            {spell.damage ?
+            spell.damage.damage_at_slot_level ? 
             Object.keys(spell.damage.damage_at_slot_level).map((key) => {return <li title={`Slot ${key}`}>Slot {key}: {spell.damage.damage_at_slot_level[key]}</li>})
+            :
+            Object.keys(spell.damage.damage_at_character_level).map((key) => {return <li title={`Slot ${key}`}>Slot {key}: {spell.damage.damage_at_character_level[key]}</li>})
             : 
             Object.keys(spell.heal_at_slot_level).map((key) => {return <li title={`Slot ${key}`}>Slot {key}: {spell.heal_at_slot_level[key]}</li>})
             }

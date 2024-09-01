@@ -17,6 +17,7 @@
     
     h1 {
       width: 100%;
+      text-align: end;
       
       color: $corDoTituloPrincipal;
     }
@@ -26,14 +27,16 @@
       width: 6em;
       font-size: 1em;
       
-      background-color: $corDeFiltragem;
+      background: $corQuartenaria;
+      border-radius: 2px;
       border: none;
     }
 
     .numberOfSpells {
       @extend .specificFiltering;
 
-      left: 0;
+      padding: 4px;
+      left: 5px;
     }
   }
 
